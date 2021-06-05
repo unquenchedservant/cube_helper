@@ -23,7 +23,7 @@ def oll_2l_algs_screen(stdscr):
 		menu_helpers.title(stdscr, title)
 		menu_helpers.status_bar(stdscr, status_msg)
 		i = 1
-		for x in range(0, 9):
+		for x in range(0, 10):
 			menu_helpers.add_algorithm(stdscr, solutions[x].get("algorithm"), solutions[x].get("name"), i)
 			i += 2
 		stdscr.refresh()
@@ -125,6 +125,8 @@ def oll_2l_all_trainer(stdscr):
 		k = stdscr.getch()
 		if k == ord('b') or k == 27:
 			oll_2l_trainer_screen(stdscr)
+		elif k == ord('p'):
+			peak(stdscr, scramble_name, status_msg, scramble)
 
 
 def oll_2l_corner_trainer(stdscr):

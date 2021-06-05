@@ -1,5 +1,8 @@
-import curses, menu_helpers, arithmetic, main
-from math import ceil
+import curses
+import menu_helpers
+import main
+import arithmetic
+
 
 def screen(stdscr):
 	curses.curs_set(0)

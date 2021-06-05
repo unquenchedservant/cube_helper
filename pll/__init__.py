@@ -1,4 +1,7 @@
-import curses, menu_helpers, main, pll.screens as screens
+import curses, pll.screens as screens
+import menu_helpers
+import main
+
 
 def screen(stdscr):
     """

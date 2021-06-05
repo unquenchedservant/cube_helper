@@ -36,7 +36,20 @@ trainer = {
 			"U L R U2 L R' U' L2 U' L2 U' L2 U' L2 U' L2 F2 L2 F2"
 	}
 }
-
+solution = {
+	"Diagonal":
+		"F R U' R' U' R U R' F' R U R' U' R F R F'",
+	"Headlights":
+		"R U R' U' F R2 U' R' U' R U R' F'",
+	"PLL(H)":
+		"M2 U M2 U2 M2 U M2",
+	"PLL(Ua)":
+		"R U' R U R U R U' R' U' R2",
+	"PLL(Ub)":
+		"R2 U R U R' U' R' U' R' U R'",
+	"PLL(Z)":
+		"M' U M2 U M2 U M' U2 M2 U'"
+}
 solutions = {
 	0: {
 		"name":

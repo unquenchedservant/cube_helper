@@ -1,4 +1,6 @@
-import curses, menu_helpers, main
+import curses
+import menu_helpers
+import main
 
 from oll.screens import oll_2l_trainer_screen, oll_2l_algs_screen
 
