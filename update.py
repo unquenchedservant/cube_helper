@@ -18,14 +18,14 @@ def screen(stdscr):
 	x_pos = 1
 	y_pos = 1
 	title = "Cube Scrambler Update Available"
-	center_pos = arithmetic.get_center(stdscr.getmaxyx()[0])
+	center_pos = arithmetic.get_center(stdscr.getmaxyx()[1])
 	yes_x_pos = center_pos - 6
 	no_x_pos = center_pos + 3
 	x_pos = yes_x_pos
 	while True:
 		stdscr.clear()
 		menu_helpers.title(stdscr, title)
-		last_y_pos = menu_helpers.center_scramble(stdscr, "Would you like to download the update now?")
+		last_y_pos = menu_helpers.center_scramble(stdscr, "Download the update now?")
 		yesno_y_pos = last_y_pos + 2
 
 		if x_pos == yes_x_pos:

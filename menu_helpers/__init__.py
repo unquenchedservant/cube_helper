@@ -31,7 +31,7 @@ def center_scramble(stdscr, scramble):
         scramble = scramble[cur_line_size:]
         lines -= 1
         display_y += 1
-    return display_y
+    return display_y + 2
 
 def title(stdscr, title_str):
     """

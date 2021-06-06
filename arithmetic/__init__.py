@@ -3,7 +3,7 @@ import random
 
 
 def get_center(width):
-	return int((width / 2))
+	return int(floor(width // 2))
 
 
 def title_start(title, width):
