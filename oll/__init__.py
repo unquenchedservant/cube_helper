@@ -45,7 +45,7 @@ def screen(stdscr):
 				y_pos = 1
 		elif k == 10 or k == curses.KEY_RIGHT:
 			if y_pos == 1:
-				oll_2l_algs_screen(stdscr)
+				oll_2l_algs_screen(stdscr, fromPLLMenu=False, fromOLLMenu=True)
 			if y_pos == 2:
 				oll_2l_trainer_screen(stdscr)  # two_look_oll_trainer
 			if y_pos == 3:

@@ -1,4 +1,5 @@
-import curses, pll.screens as screens
+import curses
+import pll.screens as screens
 import menu_helpers
 import main
 
@@ -42,7 +43,7 @@ def screen(stdscr):
                 y_pos = 1
         elif k == 10 or k == curses.KEY_RIGHT:
             if y_pos == 1:
-                screens.pll_2l_algs_screen(stdscr)
+                screens.pll_2l_algs_screen(stdscr, fromPLLMenu=True, fromOLLMenu=False)
             if y_pos == 2:
                 screens.pll_2l_trainer(stdscr)
             if y_pos == 3:

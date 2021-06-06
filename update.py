@@ -2,7 +2,6 @@ import curses
 import menu_helpers
 import arithmetic
 import sys
-import subprocess
 import main
 import os
 import requests
