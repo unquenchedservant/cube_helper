@@ -202,7 +202,6 @@ def oll_2l_corner_trainer(stdscr, currentScrambleName=None, currentScramble=None
 			currentScrambles = None
 			currentScramble = None
 			previousName = ""
-			print("yes")
 		else:
 			if len(current_scrambles) == 0:
 				current_scrambles = scrambles.copy()

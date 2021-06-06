@@ -3,7 +3,7 @@ from dotenv import dotenv_values
 import os
 import sys
 
-CURRENT_VERSION = "0.13"
+CURRENT_VERSION = "0.131"
 extDataDir = os.getcwd()
 if getattr(sys, 'frozen', False):
 	parentDir = os.path.dirname(__file__)
