@@ -1,7 +1,11 @@
-import curses, update, main, utilities, os
+import curses
+import update
+import main
+import utilities
+import os
 
 if __name__ == "__main__":
-	os.system("title Cube Helper v0.11")
+	os.system("title Cube Helper v0.13")
 	if utilities.update_available():
 		curses.wrapper(update.screen)
 	else:
