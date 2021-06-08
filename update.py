@@ -1,59 +1,26 @@
-import curses
-import menu_helpers
-import arithmetic
 import sys
-import main
 import os
 import requests
+import PyQt6
+from PyQt6.QtWidgets import (QWidget, QMessageBox, QToolTip, QPushButton, QLabel, QApplication, QHBoxLayout, QVBoxLayout)
+from PyQt6.QtGui import QFont
 
+class Update(PyQt6.QtWidgets.QMessageBox):
+	def __init__(self):
+		super().__init__()
+		self.initUI()
 
-def screen(stdscr):
-	curses.start_color()
-	curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
-	curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
-	curses.init_pair(3, curses.COLOR_BLACK, curses.COLOR_WHITE)
-	curses.init_pair(4, curses.COLOR_GREEN, curses.COLOR_BLACK)
-	curses.curs_set(0)
-	stdscr.clear()
-	x_pos = 1
-	y_pos = 1
-	title = "Cube Scrambler Update Available"
-	center_pos = arithmetic.get_center(stdscr.getmaxyx()[1])
-	yes_x_pos = center_pos - 6
-	no_x_pos = center_pos + 3
-	x_pos = yes_x_pos
-	while True:
-		stdscr.clear()
-		menu_helpers.title(stdscr, title)
-		last_y_pos = menu_helpers.center_scramble(stdscr, "Download the update now?")
-		yesno_y_pos = last_y_pos + 2
-
-		if x_pos == yes_x_pos:
-			stdscr.addstr(yesno_y_pos, yes_x_pos, "Yes", curses.color_pair(3))
-		else:
-			stdscr.addstr(yesno_y_pos, yes_x_pos, "Yes")
-		if x_pos == no_x_pos:
-			stdscr.addstr(yesno_y_pos, no_x_pos, "No", curses.color_pair(3))
-		else:
-			stdscr.addstr(yesno_y_pos, no_x_pos, "No")
-		stdscr.move(y_pos, x_pos)
-		stdscr.refresh()
-		k = stdscr.getch()
-		if k == 27 or k == ord('b'):
-			main.screen(stdscr)
-		if k == curses.KEY_LEFT or k == curses.KEY_RIGHT or k == curses.KEY_UP or k == curses.KEY_DOWN:
-			if x_pos == yes_x_pos:
-				x_pos = no_x_pos
-			else:
-				x_pos = yes_x_pos
-
-		elif k == 10:
-			if x_pos == yes_x_pos:
-				response = requests.get("https://api.github.com/repos/unquenchedservant/cube_helper/releases/latest")
-				download_url = response.json()["assets"][1]["browser_download_url"]
-				r = requests.get(download_url, allow_redirects=True)
-				open('Updater.exe', 'wb').write(r.content)
-				os.system("start cmd.exe /C Updater.exe")
-				sys.exit()
-			else:
-				main.screen(stdscr)
+	def initUI(self):
+		self.setWindowTitle("Update")
+		self.setText("Would you to download the latest update?")
+		self.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+		self.setDefaultButton(QMessageBox.StandardButton.Yes)
+		self.buttonClicked.connect(self.handleButton)
+	def handleButton(self, i):
+		if i.text() == "&Yes":
+			response = requests.get("https://api.github.com/repos/unquenchedservant/cube_helper/releases/latest")
+			download_url = response.json()["assets"][1]["browser_download_url"]
+			r = requests.get(download_url, allow_redirects=True)
+			open('Updater.exe', 'wb').write(r.content)
+			os.system("start cmd.exe /C Updater.exe")
+			sys.exit()

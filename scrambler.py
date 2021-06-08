@@ -1,14 +1,9 @@
-import curses
-import update
-import main
-import utilities
-import os
+import sys
+from main import Screen
+from PyQt6 import sip
+from PyQt6.QtWidgets import QApplication
 
 if __name__ == "__main__":
-	os.system("title Cube Helper v0.13")
-	if utilities.update_available():
-		curses.wrapper(update.screen)
-	else:
-		if os.path.exists('Updater.exe'):
-			os.remove('Updater.exe')
-		curses.wrapper(main.screen)
+	app = QApplication(sys.argv)
+	screen = Screen()
+	sys.exit(app.exec())

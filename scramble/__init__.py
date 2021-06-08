@@ -1,18 +1,28 @@
-import curses
-import menu_helpers
-import main
 import arithmetic
+from PyQt6.QtWidgets import QApplication,QFrame, QLabel, QWidget, QHBoxLayout, QVBoxLayout, QPushButton, QDialog, QMenu, QMainWindow
+class Screen(QFrame):
+	def __init__(self):
+		super().__init__()
+		self.mainLayout = QVBoxLayout()
+		self.setStyleSheet("background-color: #121212;")
+		self.scramble = arithmetic.get_scramble()
+		self.scrambleText = QLabel(self.scramble, self)
+		self.scrambleText.setWordWrap(True)
+		self.scrambleText.setStyleSheet("font: 30px; color: #9cb9d3;")
+		self.newScramble = QPushButton("New Scramble", self)
+		self.newScramble.setStyleSheet("margin-right: 20%; margin-left: 20%; background-color: #383838; color: #9cb9d3; font: 20px; border-style: outset; border-width: 2px; border-radius: 10px; border-color: #9cb9d3;")
+		self.mainLayout.addWidget(self.scrambleText)
+		self.mainLayout.addWidget(self.newScramble)
+		self.newScramble.clicked.connect(self.getNewScramble)
+		self.setLayout(self.mainLayout)
 
-
-def screen(stdscr):
-	curses.curs_set(0)
-	status_msg = "Created by Jonathan Thorne | Random Scramble Generator | ©2021 | esc/m : main menu"
-	while True:
-		stdscr.clear()
-		menu_helpers.status_bar(stdscr, status_msg)
-		scramble = arithmetic.get_scramble()
-		menu_helpers.center_scramble(stdscr, scramble)
-		stdscr.refresh()
-		k = stdscr.getch()
-		if k == ord('m') or k == 27:
-			main.screen(stdscr)
+	def getNewScramble(self):
+		self.mainLayout.removeWidget(self.scrambleText)
+		self.mainLayout.removeWidget(self.newScramble)
+		self.scramble = arithmetic.get_scramble()
+		self.scrambleText = QLabel(self.scramble, self)
+		self.scrambleText.setWordWrap(True)
+		self.newScramble.setStyleSheet("margin-right: 30px; margin-left: 30px; background-color: #383838; color: #9cb9d3; font: 20px; border-style: outset; border-width: 2px; border-radius: 10px; border-color: #9cb9d3;")
+		self.scrambleText.setStyleSheet("font: 30px; color: #9cb9d3;")
+		self.mainLayout.addWidget(self.scrambleText)
+		self.mainLayout.addWidget(self.newScramble)

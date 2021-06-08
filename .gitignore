@@ -129,3 +129,7 @@ venve/
 Updater.exe
 
 updater.py
+
+upx/
+
+install.cmd

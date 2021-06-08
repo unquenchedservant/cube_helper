@@ -1,37 +1,6 @@
 from math import floor
 import random
 
-
-def get_center(width):
-	return int(floor(width // 2))
-
-
-def title_start(title, width):
-	"""
-    title_start(string title, int width)
-    returns the starting position for the title given the width of the screen and the title
-
-    Parameters:
-    title - Title of the screen
-    width - Width of the window
-    """
-	start_pos = int((width // 2) - (len(title) // 2) - len(title) % 2)
-	return start_pos
-
-
-def scramble_start(lines, height):
-	"""
-    scramble_start(string title, int width)
-    returns the starting position for the scramble given the width of the screen and the title
-
-    Parameters:
-    title - Title of the screen
-    width - Width of the window
-    """
-	start_pos = int(((height // 2) - 1) - (lines // 2) - lines % 2)
-	return start_pos
-
-
 def get_random(max_rand):
 	"""
     get_random(int max_rand)
